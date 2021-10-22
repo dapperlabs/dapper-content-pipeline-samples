@@ -6,4 +6,9 @@ in this repository will be some scripts and data to configure the inital samples
 # Data
 - bird_s_assist_sqdap_seavpho_july_09_2021 - https://en.wikipedia.org/wiki/Sue_Bird WNBA
 - ogunbowale_a_layup_sqdap_dalvsea_jun_4_2021 - https://en.wikipedia.org/wiki/Arike_Ogunbowale WNBA
-    - Tim Hardaway Jr
+- allen_r_jumper_sqdap_seavpho_jan_22_2006- Walter Allen - https://en.wikipedia.org/wiki/Ray_Allen NBA
+- antetokounmpo_g_block_phxvmil_verdap_phantom_jul_14_2021 - Deandre Ayton - https://en.wikipedia.org/wiki/Deandre_Ayton NBA
+
+
+# Notes
+- Added some scripts in ./sql
