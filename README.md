@@ -2,6 +2,22 @@
 
 in this repository will be some scripts and data to configure the inital samples and test cases to the project Dapper Content Pipeline 
 
+# Test Plan
+- clean 
+    - ftp inbox
+    - directory json gs://nba-ftp-staging/nba/json/
+    - directory thumbailds gs://poc-node-video-processing-output
+- process
+    - copy test cases to ftp inbox
+    - startFTPwatcher
+    - check FTPWatcher complexion
+    - check ImageProcesor 
+    - check ETL
+    - check DB
+    - Show ReTool interaction
+    - check DB after ReTool interaction
+
+
 
 # Data
 - bird_s_assist_sqdap_seavpho_july_09_2021 - https://en.wikipedia.org/wiki/Sue_Bird WNBA

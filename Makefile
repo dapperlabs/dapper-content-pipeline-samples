@@ -38,3 +38,6 @@ clean:
 
 startFTPwatcher:
 	curl http://b-ftpwatcher-test-dot-nba-content-pipeline.uc.r.appspot.com/tasks/startProcess
+
+listAllTables:
+	psql postgres://$$DB_USER:$$DB_PASS@$$DB_IP:5432/nba-content-pipeline-staging-db -f sql/query.sql | cat
