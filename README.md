@@ -4,6 +4,7 @@ in this repository will be some scripts and data to configure the inital samples
 
 # Test Plan
 - clean 
+    - clean db
     - ftp inbox
     - directory json gs://nba-ftp-staging/nba/json/
     - directory thumbailds gs://poc-node-video-processing-output
@@ -14,10 +15,13 @@ in this repository will be some scripts and data to configure the inital samples
     - check ImageProcesor 
     - check ETL
     - check DB
-    - Show ReTool interaction
+    - Execute ReTool interaction
     - check DB after ReTool interaction
+    - clean all
 
 
+# Utilities
+- run `nohup cloud_sql_proxy -instances=nba-content-pipeline:us-west1:nba-content-pipeline-staging=tcp:5432 > /tmp/cloud_sql_proxy.out 2>&1 &` to start cloud proxy
 
 # Data
 - bird_s_assist_sqdap_seavpho_july_09_2021 - https://en.wikipedia.org/wiki/Sue_Bird WNBA
