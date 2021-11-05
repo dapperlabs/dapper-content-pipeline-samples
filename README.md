@@ -10,6 +10,10 @@ make getSamplesNBA
 make getSamplesNFL
 ```
 
+# Reports
+- `make reportSamples` list how many files xmls and mp4 are for each productType nba/nfl
+- `make getGamesData` list the input files and the data in the format `gameid=1022100070 eventNumber=438 title=ATL@WAS gameDate=6/17/2021`
+
 # Test Plan
 - clean 
     - clean db
