@@ -3,14 +3,25 @@ listSamples:
 
 getSamplesNBA:
 	mkdir -p nba
-	gsutil rsync gs://dapper-content-pipeline-samples/nba ./nba
+	gsutil rsync -c gs://dapper-content-pipeline-samples/nba ./nba
+
+getSamplesNFL:
+	mkdir -p nfl
+	gsutil rsync -c gs://dapper-content-pipeline-samples/nfl ./nfl
+
+reportSamples:
+	@NBA_VIDEOS=`find ./nba -name "*.mp4" | wc -l` ; echo "NBA_VIDEOS=$$NBA_VIDEOS" 
+	@NBA_XML=`find ./nba -name "*.xml" | wc -l` ; echo "NBA_XML=$$NBA_XML" 
+	@NFL_VIDEOS=`find ./nfl -name "*.mp4" | wc -l` ; echo "NFL_VIDEOS=$$NFL_VIDEOS" 
+	@NFL_XML=`find ./nfl -name "*.xml" | wc -l` ; echo "NFL_XML=$$NFL_XML" 
 
 uploadSamples:
 	#gsutil cp nba/antetokounmpo_g_block_phxvmil_verdap_phantom_jul_14_2021*         gs://dapper-content-pipeline-samples/nba/
-	gsutil rsync  ./nba gs://dapper-content-pipeline-samples/nba
+	#gsutil -m rsync -c  ./nba gs://dapper-content-pipeline-samples/nba
+	gsutil -m rsync -c  ./nfl gs://dapper-content-pipeline-samples/nfl
 
 getGamesIds:
-	@grep gameid nba/batum_n_block_lacvdal*.xml  > /tmp/nba.txt 
+	@grep gameid nba/*.xml  > /tmp/nba.txt 
 	@gawk  'BEGIN { FS="\"" ; } { print $$4  }' /tmp/nba.txt
 
 getGamesData:
@@ -41,3 +52,17 @@ startFTPwatcher:
 
 listAllTables:
 	psql postgres://$$DB_USER:$$DB_PASS@$$DB_IP:5432/nba-content-pipeline-staging-db -f sql/query.sql | cat
+
+
+createTestCase01:
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
+
+
+createTestCase02:
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
+	# gsutil cp gs:/samples a input 
