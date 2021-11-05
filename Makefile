@@ -3,11 +3,29 @@ listSamples:
 
 getSamplesNBA:
 	mkdir -p nba
-	gsutil rsync gs://dapper-content-pipeline-samples/nba ./nba
+	gsutil rsync -c gs://dapper-content-pipeline-samples/nba ./nba
+
+getSamplesNFL:
+	mkdir -p nfl
+	gsutil rsync -c gs://dapper-content-pipeline-samples/nfl ./nfl
+
+reportSamples:
+	@NBA_VIDEOS=`find ./nba -name "*.mp4" | wc -l` ; echo "NBA_VIDEOS=$$NBA_VIDEOS" 
+	@NBA_XML=`find ./nba -name "*.xml" | wc -l` ; echo "NBA_XML=$$NBA_XML" 
+	@NFL_VIDEOS=`find ./nfl -name "*.mp4" | wc -l` ; echo "NFL_VIDEOS=$$NFL_VIDEOS" 
+	@NFL_XML=`find ./nfl -name "*.xml" | wc -l` ; echo "NFL_XML=$$NFL_XML" 
+
+
+syncVideo2Samples:
+	gsutil rsync gs://nba-ftp-staging/nba/videos/* gs://dapper-content-pipeline-samples/nba 
+
+syncXML2Samples:
+	gsutil rsync gs://nba-ftp-staging/nba/xml/* gs://dapper-content-pipeline-samples/nba 
 
 uploadSamples:
 	#gsutil cp nba/antetokounmpo_g_block_phxvmil_verdap_phantom_jul_14_2021*         gs://dapper-content-pipeline-samples/nba/
-	gsutil rsync  ./nba gs://dapper-content-pipeline-samples/nba
+	#gsutil -m rsync -c  ./nba gs://dapper-content-pipeline-samples/nba
+	gsutil -m rsync -c  ./nfl gs://dapper-content-pipeline-samples/nfl
 
 getGamesIds:
 	@grep gameid nba/batum_n_block_lacvdal*.xml  > /tmp/nba.txt 

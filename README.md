@@ -32,3 +32,4 @@ in this repository will be some scripts and data to configure the inital samples
 
 # Notes
 - Added some scripts in ./sql
+- Added targets to 

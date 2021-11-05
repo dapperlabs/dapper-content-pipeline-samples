@@ -1,3 +1,21 @@
+
+
+DROP TABLE IF EXISTS "Images" ;
+CREATE TABLE public."Images" (
+    id integer NOT NULL,
+    play_id character varying(200) NOT NULL,
+    image_url character varying(200),
+    cropped_image_url character varying(200),
+    rating integer NOT NULL
+);
+
+
+ALTER TABLE public."Images"
+ADD COLUMN image_url character varying(200);
+
+
+
+
 DROP TABLE IF EXISTS "SportRadarInfo" ;
 
 CREATE TABLE public."SportRadarInfo" (
