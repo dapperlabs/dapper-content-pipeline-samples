@@ -1,4 +1,4 @@
 .DS_Store
-/nba
-/nfl
+nba/*
+nfl/*
 dump*.sql
