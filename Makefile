@@ -66,3 +66,19 @@ createTestCase02:
 	# gsutil cp gs:/samples a input 
 	# gsutil cp gs:/samples a input 
 	# gsutil cp gs:/samples a input 
+
+stopCloudProxies:
+	echo kill -9 `ps -ef | grep cloud_sql_proxy | grep -v  grep | gawk '{ pid=pid " " $$2 } END { print pid }'`
+	kill -9 `ps -ef | grep cloud_sql_proxy | grep -v  grep | gawk '{ pid=pid " " $$2 } END { print pid }'`
+
+startCloudProxies:
+	nohup cloud_sql_proxy -instances=nba-content-pipeline:us-west1:nba-content-pipeline-staging=tcp:5433 > /tmp/cloud_sql_proxy_dev.out 2>&1 &
+	nohup cloud_sql_proxy -instances=nba-content-pipeline-qa:us-west1:nba-content-pipeline-qa=tcp:5434 > /tmp/cloud_sql_proxy_qa.out 2>&1 &
+	
+checkCloudProxies:	
+	psql postgres://$$DB_USER:$$DB_PASS@127.0.0.1:5433/nba-content-pipeline-staging-db -c "\d"
+	psql postgres://$$QA_DB_USER:$$QA_DB_PASS@127.0.0.1:5434/nba-content-pipeline-qa-db -c "\d"
+
+setCloudProxiesAlias:
+	alias psql-dev='psql postgres://$$DB_USER:$$DB_PASS@$DB_IP:$$DB_PORT/nba-content-pipeline-staging-db'
+	alias psql-qa='psql postgres://$$QA_DB_USER:$$QA_DB_PASS@127.0.0.1:5434/nba-content-pipeline-qa-db'
