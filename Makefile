@@ -82,3 +82,13 @@ checkCloudProxies:
 setCloudProxiesAlias:
 	alias psql-dev='psql postgres://$$DB_USER:$$DB_PASS@$DB_IP:$$DB_PORT/nba-content-pipeline-staging-db'
 	alias psql-qa='psql postgres://$$QA_DB_USER:$$QA_DB_PASS@127.0.0.1:5434/nba-content-pipeline-qa-db'
+
+createTestCaseNewArquitectura:
+	gsutil cp ./nba/bird_s_assist_verdap_seavpho_july_09_2021_vertical_9x16.mp4 	gs://content-pipeline-inbox
+	gsutil cp ./nba/bird_s_assist_verdap_phxvsea_july_01_2018_vertical_9x16.xml		gs://content-pipeline-inbox
+	gsutil cp ./nba/bird_s_assist_verdap_phxvsea_july_01_2018_vertical_9x16.mp4		gs://content-pipeline-inbox
+	gsutil cp ./nba/bird_s_assist_verdap_seavpho_july_09_2021_vertical_9x16.xml 	gs://content-pipeline-inbox
+	gsutil cp ./nfl/2021_W9_NYJ_IND_Taylor_Jonathan_Vertical.mp4					gs://content-pipeline-inbox
+	gsutil cp ./nfl/2021_W9_NYJ_IND_Taylor_Jonathan_Square.mp4						gs://content-pipeline-inbox
+	gsutil cp ./nfl/2021_W9_NYJ_IND_Taylor_Jonathan_Vertical.xml					gs://content-pipeline-inbox
+	gsutil cp ./nfl/2021_W9_NYJ_IND_Taylor_Jonathan_Square.xml						gs://content-pipeline-inbox
