@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/curl'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      echo Hello World
