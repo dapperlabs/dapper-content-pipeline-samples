@@ -39,7 +39,7 @@ cleanJsonsBucket:
 
 
 backupDB:
-	D=$$( date "+%Y-%m-%d_%H-%M-%S" ) ; pg_dump postgres://$$DB_USER:$$DB_PASS@$$DB_IP:5432/nba-content-pipeline-staging-db > dump-$$D.sql
+	D=$$( date "+%Y-%m-%d_%H-%M-%S" ) ; pg_dump postgres://$$DB_USER:$$DB_PASS@$$DB_IP:5433/nba-content-pipeline-staging-db > dump-$$D.sql
 	#D=` date "+%Y-%m-%d_%H-%M-%S" `  ; echo $$D
 	#D=$$( date "+%Y-%m-%d_%H-%M-%S" )  ; echo $$D
 
